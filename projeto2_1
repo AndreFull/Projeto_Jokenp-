@@ -1,0 +1,64 @@
+var prompt = require('prompt-sync')(); 
+
+//Projeto JOKENPO
+const opcoes =["pedra","papel","tesoura"];
+let escolhaUsuario;
+let escolhaComputador = Math.ceil(Math.random()*3);
+let quantidadePartidas ;
+let contador = 0;
+
+if(escolhaComputador === 1){
+    escolhaComputador = "pedra";
+}else if(escolhaComputador === 2){
+    escolhaComputador = "papel";
+}else if (escolhaComputador === 3){
+    escolhaComputador = "tesoura";
+}
+
+do{
+    while(isNaN(quantidadePartidas)){
+        quantidadePartidas = +prompt("Quantas partidas vc deseja jogar? ");
+    }
+
+    let escolhaUsuario = prompt("Digite sua escolha entre:pedra, papel ou tesoura: ").toLocaleLowerCase();
+   
+    while(!opcoes.includes(escolhaUsuario)){
+        let escolhaUsuario = prompt("Digite sua escolha entre:pedra, papel ou tesoura: ").toLocaleLowerCase();
+
+    }
+
+    console.log(`A sua escolha foi:${escolhaUsuario} `);
+    console.log(`A escolha do computador foi: ${escolhaComputador} `);
+
+    if(escolhaUsuario === "pedra"){
+        if(escolhaComputador === "pedra"){
+            console.log("A partida terminou em empate!")
+        }else if(escolhaComputador === "papel"){
+            console.log("Você perdeu para o computador.Pedra perde para papel!")
+        }else if(escolhaComputador === "tesoura"){
+            console.log("Você ganhou para o computador.Pedra ganha para tesoura!")
+        }
+    }
+
+    if(escolhaUsuario === "papel"){
+        if(escolhaComputador === "pedra"){
+            console.log("Você ganhou para o computador.Papel ganha para pedra!")
+        }else if(escolhaComputador === "papel"){
+            console.log("A partida terminou em empate!")
+        }else if(escolhaComputador === "tesoura"){
+            console.log("Você perdeu para o computador.Papel perde para tesoura!")
+        }
+    }
+
+    if(escolhaUsuario === "tesoura"){
+        if(escolhaComputador === "pedra"){
+            console.log("Você perdeu para o computador.tesoura perde para pedra!")
+        }else if(escolhaComputador === "papel"){
+            console.log("Você ganhou para o computador.tesoura ganha para papel!")
+        }else if(escolhaComputador === "tesoura"){
+            console.log("A partida terminou em empate!")
+        }
+    }
+contador++
+}
+while(contador < quantidadePartidas){};
